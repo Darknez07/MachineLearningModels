@@ -43,9 +43,6 @@ From Today it will contain outputs with graphs<br>
    Calculate or guess a number find how much far we are and then see the next person(number)<br>
    with the closest and guess again until you reach the lowest error or estimate<br>
   <br> 
-   # NLP - Text Classification 
-
-It is field of AI in which we try to process natural language (language we speak -hindi , english etc) and draw neccessay insights from it .Just like we do with it .
 ## Preprocessing 
  As computer doesnot understand natural language , we will encode it into numbers.
  We will do it with the help of tokenizer .The advance form of tokenizer is countervector which encode text into numbers and convert it  into vectors.

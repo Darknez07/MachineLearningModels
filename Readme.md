@@ -70,3 +70,45 @@ Deep learning is a set of algorithms and techniques inspired by how the human br
 
 * On the one hand, deep learning algorithms require much more training data than traditional machine learning algorithms, i.e. at least millions of tagged examples. On the other hand, traditional machine learning algorithms such as SVM and NB reach a certain threshold where adding more training data doesn’t improve their accuracy. In contrast, deep learning classifiers continue to get better the more data you feed them with.
 * Deep learning algorithms such as Word2Vec or GloVe are also used in order to obtain better vector representations for words and improve the accuracy of classifiers trained with traditional machine learning algorithms(transfered learning)
+
+# Image Classification of Cifar 100 dataset using CNN.
+
+## What is CNN
+
+CNN also known as Convolution Neural Network is a kind of Deep Neural network which is commonly used in analyzing visual data such as images. To explain in simple terms, it is a deep neural network where the first layer takes inputs and understand what each image pixel tries to account for using various filters, after that we flatten them and pass it to a Neural Network, then it goes to a classifier for predictions.
+
+## The Dataset
+
+The CIFAR-100 dataset consists of 60000 32x32 colour images in 100 classes. It has 100 classes containing 600 images each. There are 500 training images and 100 testing images per class.
+
+## Training the Dataset
+
+For a better training we need lots and lots of data but as we know we have very limited amount of data. So we have to randomize the dataset by applying different properties like Data Augmentation.
+  * __Data augmentation__: It is a strategy that enables practitioners to significantly increase the diversity of data available for training models, without actually collecting new data. Data augmentation techniques such as cropping, padding, and horizontal flipping are commonly used to train large neural networks.
+
+  * __Data Normalization__: In this technique we normalized the image tensors by subtracting the mean and dividing by the standard deviation of pixels across each channel. Normalizing the data prevents the pixel values from any one channel from disproportionately affecting the losses and gradients.
+
+## Model
+
+I have used a 12 layers CNN model where there are 6 residual layers and 5 convolutional block. Each convolutional block convert the number of channels from in_channels to out_channels. A kernel of size 3x3 is used. We also apply batch Normalization and Max Pooling(Explained Later). An activation function of ReLu is used for training our model.
+
+## Hyperparameters
+
+_Batch Size_: 400<br>
+_Optimization Function_: Adam<br>
+_Activation Function_: ReLu<br>
+_Learning Rate Scheduler_: ONE CYCLE METHOD <br>
+_Total No of Epochs_: (10+10+4+4+10)<br>
+_Learning Rates_: (0.001,0.005,0.00001,0.0001,0.0001)<br>
+
+## Conclusion
+
+Using my model I achieved a maximum accuracy of nearly 73%. As the number of images are too less and limited the accuracy is difficult to push any further even after using many pretrained models like vgg and Resnet. 
+
+## Defining the terms
+
+ * __Max Pooling__: Max pooling is a sample-based discretization process. The objective is to down-sample an input representation (image, hidden-layer output matrix, etc.), reducing its dimensionality and allowing for assumptions to be made about features contained in the sub-regions binned. Max pooling is done by applying a max filter to (usually) non-overlapping subregions of the initial representation.
+
+* __Batch Normalization__: Batch Normalization is a supervised learning technique that converts interlayer outputs into of a neural network into a standard format, called normalizing.  This effectively 'resets' the distribution of the output of the previous layer to be more efficiently processed by the subsequent layer.
+
+* __ONE CYCLE METHOD__: It is a learning rate scheduler. In this method learning rate of each epochs increases in the beginning to reach a peak value of the learning rate at nearly 30% of the total number of epochs and then gradually decreases. 
